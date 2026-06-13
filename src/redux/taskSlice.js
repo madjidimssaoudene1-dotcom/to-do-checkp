@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const loadTasks = () => {
+  try {
+    const data = localStorage.getItem("tasks");
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+};
+
+
 const initialState = {
-  tasks: [
-    { id: 1, description: "Learn Redux", isDone: false },
-    { id: 2, description: "Build ToDo App", isDone: true },
-  ],
+  tasks: loadTasks(),
   filter: "all",
 };
 
