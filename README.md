@@ -1,16 +1,140 @@
-# React + Vite
+# 📝 Redux ToDo App (Vite + React + Tailwind)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
 
-Currently, two official plugins are available:
+This project is a **ToDo Application** built using **React (Vite)** and **Redux Toolkit** to manage global state.
+It allows users to create, edit, filter, and persist tasks using **localStorage**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* ➕ Add new tasks
+* ✅ Mark tasks as done / not done
+* ✏️ Edit task description
+* 🔍 Filter tasks:
 
-## Expanding the ESLint configuration
+  * All
+  * Done
+  * Not Done
+* 💾 Persistent storage using **localStorage**
+* ⚡ Fast development with **Vite**
+* 🎨 Styled using **Tailwind CSS**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧠 Task Structure
+
+Each task contains:
+
+```js
+{
+  id: number,
+  description: string,
+  isDone: boolean
+}
+```
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+│
+├── components/
+│   ├── AddTask.jsx
+│   ├── ListTask.jsx
+│   └── Task.jsx
+│
+├── redux/
+│   ├── store.js
+│   └── taskSlice.js
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Create Project
+
+```bash
+npm create vite@latest todo-redux-app
+cd todo-redux-app
+npm install
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install @reduxjs/toolkit react-redux
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+### 3. Run the App
+
+```bash
+npm run dev
+```
+
+---
+
+## 🧩 Redux Logic
+
+* **Store** is configured using `configureStore`
+* **Slice** handles:
+
+  * Adding tasks
+  * Toggling task status
+  * Editing tasks
+  * Filtering tasks
+
+---
+
+## 💾 LocalStorage Persistence
+
+Tasks are saved automatically in the browser:
+
+* On app load → tasks are loaded from `localStorage`
+* On update → tasks are saved back to `localStorage`
+
+```js
+useEffect(() => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}, [tasks]);
+```
+
+---
+
+## 🎨 Styling
+
+* Built with **Tailwind CSS**
+* Responsive layout
+* Simple and clean UI
+
+---
+
+## 📌 Future Improvements
+
+* ❌ Delete task feature
+* 🌙 Dark / Light mode toggle
+* 🎬 Animations with Tailwind
+* 📦 Drag & drop tasks
+* 🔐 Backend integration
+
+---
+
+## 👨‍💻 Author
+
+Built as part of a Redux checkpoint project using modern React tools.
+
+---
+
+## 📄 License
+
+This project is open-source and free to use.
